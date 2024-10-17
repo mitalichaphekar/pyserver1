@@ -1,0 +1,15 @@
+import json
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from datetime import datetime
+
+class MyHTTPRequestHandler(BaseHTTPRequestHandler):
+    
+    def do_POST(self):
+        # Get the content length of the POST data
+        content_length = int(self.headers['Content-Length'])
+        
+        # Read and decode the incoming data
+        post_data = self.rfile.read(content_length).decode('utf-8')
+        
+        # Log the received data for debugging purposes
+        print(f"Received P
